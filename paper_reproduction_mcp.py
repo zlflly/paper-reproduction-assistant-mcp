@@ -1253,10 +1253,4 @@ Python版本: {env_setup.get('python_version', '3.8+')}
         return [TextContent(type="text", text=f"未知工具: {name}")]
 
 if __name__ == "__main__":
-    import argparse
-    parser = argparse.ArgumentParser(description="Paper Reproduction Assistant MCP Server")
-    parser.add_argument("--port", type=int, default=8000, help="Server port")
-    args = parser.parse_args()
-    
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=args.port)
+    asyncio.run(app.run())

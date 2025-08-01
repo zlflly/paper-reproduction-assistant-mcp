@@ -1,0 +1,49 @@
+{
+  "name": "paper-reproduction-assistant-mcp",
+  "version": "1.0.0",
+  "description": "A comprehensive MCP server for guiding academic paper reproduction workflows",
+  "main": "dist/cli.js",
+  "bin": {
+    "paper-reproduction-assistant-mcp": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/cli.js",
+    "dev": "ts-node src/cli.ts"
+  },
+  "keywords": [
+    "mcp",
+    "paper-reproduction",
+    "academic-research",
+    "explainable-ai",
+    "machine-learning",
+    "cli"
+  ],
+  "author": "zlflly",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zlflly/paper-reproduction-assistant-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zlflly/paper-reproduction-assistant-mcp/issues"
+  },
+  "homepage": "https://github.com/zlflly/paper-reproduction-assistant-mcp#readme",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
+  ]
+} 
