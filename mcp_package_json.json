@@ -1,0 +1,35 @@
+{
+  "name": "paper-reproduction-assistant-mcp",
+  "version": "1.0.0",
+  "description": "A comprehensive MCP server for guiding academic paper reproduction workflows",
+  "main": "src/server.py",
+  "scripts": {
+    "start": "python src/server.py",
+    "test": "python -m pytest tests/",
+    "lint": "flake8 src/ tests/"
+  },
+  "keywords": [
+    "mcp",
+    "paper-reproduction", 
+    "academic-research",
+    "explainable-ai",
+    "machine-learning"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zlflly/paper-reproduction-assistant-mcp.git"
+  },
+  "bugs": {
+          "url": "https://github.com/zlflly/paper-reproduction-assistant-mcp/issues"
+  },
+      "homepage": "https://github.com/zlflly/paper-reproduction-assistant-mcp#readme",
+  "mcp": {
+    "server": {
+      "command": "python",
+      "args": ["src/server.py"],
+      "env": {}
+    }
+  }
+}

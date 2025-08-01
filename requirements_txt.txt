@@ -1,0 +1,26 @@
+# MCP Framework
+mcp>=1.0.0
+
+# HTTP Client
+httpx>=0.25.0
+
+# Data Processing
+pandas>=1.5.0
+numpy>=1.21.0
+
+# PDF Processing (can be replaced with actual PDF MCP tool)
+PyPDF2>=3.0.0
+pdfplumber>=0.9.0
+
+# Web Server (optional, for standalone mode)
+uvicorn>=0.20.0
+fastapi>=0.100.0
+
+# Development Dependencies
+pytest>=7.0.0
+flake8>=5.0.0
+black>=22.0.0
+
+# Optional: For advanced paper analysis
+# transformers>=4.20.0
+# torch>=1.12.0
