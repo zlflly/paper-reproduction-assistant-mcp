@@ -2,14 +2,14 @@
   "name": "paper-reproduction-assistant-mcp",
   "version": "1.0.0",
   "description": "A comprehensive MCP server for guiding academic paper reproduction workflows",
-  "main": "dist/cli.js",
+  "main": "dist/cli.mjs",
   "bin": {
-    "paper-reproduction-assistant-mcp": "dist/cli.js"
+    "paper-reproduction-assistant-mcp": "dist/cli.mjs"
   },
   "scripts": {
     "build": "tsc",
-    "start": "node dist/cli.js",
-    "dev": "ts-node src/cli.ts"
+    "start": "node dist/cli.mjs",
+    "dev": "ts-node src/cli.mts"
   },
   "keywords": [
     "mcp",

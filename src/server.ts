@@ -13,7 +13,7 @@ import { PaperFetcher } from './paper-fetcher.js';
 import { UserProfiler } from './user-profiler.js';
 import { ReproductionPlanner } from './reproduction-planner.js';
 import { GitManager } from './git-manager.js';
-import { StudyMaterialGenerator } from './study-material-generator.js';
+import { StudyMaterialGenerator } from './study-material-generator';
 
 // 全局状态
 let currentProject: ProjectState | null = null;
@@ -404,7 +404,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         };
       }
 
-      const milestone = plan.milestones.find(m => m.id === milestone_id);
+      const milestone = plan.milestones.find((m: any) => m.id === milestone_id);
       if (!milestone) {
         return {
           content: [
@@ -426,7 +426,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
 **步骤**:
 `;
-      milestone.steps.forEach((step, index) => {
+      milestone.steps.forEach((step: any, index: number) => {
         result += `${index + 1}. ${step.title}\n`;
         result += `   描述: ${step.description}\n`;
         result += `   预计时间: ${step.estimated_time}\n\n`;
@@ -481,10 +481,10 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
       // 检查里程碑是否完成
       const plan = currentProject.state.reproduction_plan;
-      const milestone = plan?.milestones.find(m => m.id === currentMilestoneId);
+      const milestone = plan?.milestones.find((m: any) => m.id === currentMilestoneId);
       
       if (milestone) {
-        const allStepsCompleted = milestone.steps.every(step =>
+        const allStepsCompleted = milestone.steps.every((step: any) =>
           currentProject!.state[`step_${step.id}_completed`]
         );
 
@@ -571,7 +571,7 @@ ${notes ? `**笔记**: ${notes}\n\n` : ''}继续完成里程碑中的其他步�
         status += `- 预计时间: ${plan.estimated_timeline || '未知'}\n\n`;
 
         let completedCount = 0;
-        milestones.forEach(milestone => {
+        milestones.forEach((milestone: any) => {
           const isCompleted = state[`milestone_${milestone.id}_completed`] || false;
           if (isCompleted) completedCount++;
 
@@ -597,7 +597,7 @@ ${notes ? `**笔记**: ${notes}\n\n` : ''}继续完成里程碑中的其他步�
           status += '1. 生成复现计划: generate_reproduction_plan\n';
         } else {
           const milestones = plan.milestones || [];
-          const nextMilestone = milestones.find(m => !state[`milestone_${m.id}_completed`]);
+          const nextMilestone = milestones.find((m: any) => !state[`milestone_${m.id}_completed`]);
           
           if (nextMilestone) {
             status += `1. 开始下一个里程碑: start_milestone (ID: ${nextMilestone.id})\n`;
@@ -627,8 +627,4 @@ ${notes ? `**笔记**: ${notes}\n\n` : ''}继续完成里程碑中的其他步�
         ],
       };
   }
-});
-
-// 启动服务器
-const transport = new StdioServerTransport();
-await server.connect(transport); 
+}); 

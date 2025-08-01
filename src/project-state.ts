@@ -33,8 +33,17 @@ export class ProjectState {
     this.dataDir = join(projectDir, 'data');
     this.resultsDir = join(projectDir, 'results');
     
-    this.state = this.loadState();
+    // 初始化时异步加载state
+    this.state = {
+      current_stage: 'initialization',
+      progress: {},
+      learning_notes: [],
+      version_history: [],
+      created_at: new Date().toISOString(),
+      last_updated: new Date().toISOString(),
+    };
     this.ensureDirectories();
+    this.loadState();
   }
 
   private async ensureDirectories(): Promise<void> {
@@ -48,19 +57,12 @@ export class ProjectState {
     }
   }
 
-  private loadState(): ProjectStateData {
+  private async loadState(): Promise<void> {
     try {
-      const data = fs.readFileSync(this.stateFile, 'utf-8');
-      return JSON.parse(data);
+      const data = await fs.readFile(this.stateFile, 'utf-8');
+      this.state = JSON.parse(data);
     } catch (error) {
-      return {
-        current_stage: 'initialization',
-        progress: {},
-        learning_notes: [],
-        version_history: [],
-        created_at: new Date().toISOString(),
-        last_updated: new Date().toISOString(),
-      };
+      // ignore, 用默认state
     }
   }
 
